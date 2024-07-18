@@ -150,6 +150,7 @@ source=(
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php7.3.patch"
+    "readdir.patch"
 )
 depends=(
 )
@@ -230,6 +231,7 @@ _patches=(
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php7.3.patch"
+    "readdir.patch"
 )
 _sapi_depends=(
     "libxml2"
@@ -530,7 +532,7 @@ _build_sapi() {
 # BUILD them all
 ################################################################################
 build() {
-    export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
+    export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types -Wno-deprecated-declarations"
     export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_openssl_v10_patch)); then
@@ -1494,4 +1496,5 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '398486597b10dcd388dfb45486e575023d0b4b78ef0d6d0f3404826829300cdf'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
-            '1cb8f76b465e3c5cd383450bc1f898859f58270d3645fb7405f93d0e06cddac7')
+            '1cb8f76b465e3c5cd383450bc1f898859f58270d3645fb7405f93d0e06cddac7'
+            '9e6e65548f14de0694b7e0f7d4c48eeef3a161b841329541034fa168329efe28')
